@@ -1627,6 +1627,29 @@
       },
       "imageType": "svg",
       "url": "https://www.chefkoch.de"
+    }, 
+    "digitallibrary": {
+      "frontends": {
+        "analoglibrary": {
+          "name": "Analog Library",
+          "instanceList": true,
+          "url": "https://codeberg.org/samps/analog-library",
+          "localhost": true
+        }
+      },
+      "targets": [
+        "^https?:\\/{2}([a-zA-Z0-9-]+\\.)*dl.acm\\.org\\/"
+      ],
+      "name": "ACM Digital Library",
+      "options": {
+        "enabled": false,
+        "unsupportedUrls": "bypass",
+        "frontend": "analoglibrary",
+        "instance": "public",
+        "redirectOnlyInIncognito": false
+      },
+      "imageType": "svg",
+      "url": "https://dl.acm.org"
     }
   }
 }

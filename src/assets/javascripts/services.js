@@ -551,6 +551,14 @@ function rewrite(url, originUrl, frontend, randomInstance, type) {
       }
       return `${randomInstance}${url.pathname}${url.search}`
     }
+    case "analoglibrary": {
+      const regex = /([a-z]+)\.dl\.acm\.org/.exec(url.hostname)
+      if (regex) {
+        const watch = url.pathname.substring(url.pathname.lastIndexOf("/") + 1)
+        return `${randomInstance}/watch?v=${watch}`
+      }
+      return `${randomInstance}${url.pathname}${url.search}`
+    }
     case "pixivViewer":
     case "liteXiv":
     case "pixivFe": {
@@ -985,6 +993,7 @@ async function reverse(url) {
       case "quora":
       case "twitter":
       case "medium":
+      case "digitallibrary":
       case "pinterest":
         return `${config.services[service].url}${url.pathname}${url.search}`
       case "fandom": {
@@ -1160,7 +1169,8 @@ const defaultInstances = {
   cryptPad: ["https://cryptpad.org"],
   phantom: ["https://phantom.kuuro.net"],
   "gelbooru-go": ["https://gel.bloat.cat"],
-  booruview: ["https://booruview.com"]
+  booruview: ["https://booruview.com"],
+  analoglibrary: ["https://al.radbox.org"]
 }
 
 async function getDefaults() {
